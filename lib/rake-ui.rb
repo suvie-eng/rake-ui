@@ -9,7 +9,9 @@ module RakeUi
   mattr_accessor :policy_callback
   mattr_accessor :auth_engine
   mattr_accessor :auth_callback
+  mattr_accessor :active_storage
 
+  self.active_storage = false
   self.allow_production = false
   self.allow_staging = true
   self.policy_engine = nil

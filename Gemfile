@@ -7,6 +7,7 @@ gemspec
 group :development do
   gem "sqlite3"
 end
-
+gem "activestorage"
+gem "friendly_id"
 gem "pry", group: [:development, :test], require: false
 gem "rails", "~> 6.1.7.4", group: [:development, :test], require: false
