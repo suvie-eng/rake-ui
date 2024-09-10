@@ -4,7 +4,6 @@
 ENV["RAILS_ENV"] = "test"
 
 require_relative "../test/dummy/config/environment"
-require 'generators/rake_ui/log_generator'
 ActiveRecord::Migrator.migrations_paths = [File.expand_path("../test/dummy/db/migrate", __dir__)]
 ActiveRecord::Migrator.migrations_paths << File.expand_path("../db/migrate", __dir__)
 ORIGINAL_CONFIGURATION = RakeUi.configuration.active_storage
