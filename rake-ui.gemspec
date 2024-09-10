@@ -23,5 +23,4 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "standardrb"
   spec.add_dependency 'activestorage'
-  spec.add_dependency 'friendly_id', '~> 5.4'
 end
