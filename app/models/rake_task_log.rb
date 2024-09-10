@@ -1,7 +1,5 @@
 class RakeTaskLog < ApplicationRecord
   include RakeTaskLogs
-  extend FriendlyId
-  friendly_id :name, use: :slugged
 
   ATTRIBUTES_TO_SHOW = %w[id name date args environment rake_command rake_definition_file log_file_name log_file_full_path]
   has_one_attached :log_file
@@ -24,8 +22,7 @@ class RakeTaskLog < ApplicationRecord
   def self.create_rake_task_log(name:, args:, environment:, rake_command:, rake_definition_file:, raker_id:)
     attributes = generate_task_attributes(raker_id:)
 
-    ::RakeTaskLog.create(slug: attributes[:id],
-                         name:,
+    ::RakeTaskLog.create(name:,
                          args:,
                          environment:,
                          rake_command:,

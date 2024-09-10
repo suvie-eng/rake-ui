@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2024_09_06_183058) do
   end
 
   create_table "rake_task_logs", force: :cascade do |t|
-    t.string "slug"
     t.integer "status", default: 0
     t.string "name"
     t.string "args"
@@ -53,7 +52,6 @@ ActiveRecord::Schema.define(version: 2024_09_06_183058) do
     t.string "raker_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["slug"], name: "index_rake_task_logs_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
