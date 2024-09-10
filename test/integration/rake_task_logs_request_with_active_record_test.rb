@@ -8,7 +8,6 @@ class RakeTaskLogsRequestWithActiveRecordTest < ActionDispatch::IntegrationTest
 
     @file = Rack::Test::UploadedFile.new(Rails.root.join('fixtures/sample_log.txt'), 'text/plain')
     @rake_task_log = ::RakeTaskLog.create!(
-      slug: 'test-file',
       status: 1,
       name: 'Test Rake Task',
       args: 'arg1,arg2',
