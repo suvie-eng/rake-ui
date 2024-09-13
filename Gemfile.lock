@@ -193,7 +193,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activestorage
   pry
   rails (~> 6.1.7.4)
   rake-ui!
