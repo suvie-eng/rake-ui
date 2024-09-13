@@ -2,7 +2,6 @@
 
 module RakeUi
   class RakeTaskLogsController < ApplicationController
-
     RAKE_TASK_LOG_ATTRS = [:id,
       :name,
       :args,
