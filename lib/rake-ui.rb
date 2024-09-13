@@ -4,6 +4,11 @@ require "rake-ui/engine"
 
 module RakeUi
   mattr_accessor :allow_production
+  mattr_accessor :allow_staging
+  mattr_accessor :policy_engine
+  mattr_accessor :policy_callback
+  mattr_accessor :auth_engine
+  mattr_accessor :auth_callback
   mattr_accessor :active_storage
   mattr_accessor :storage_service
 
