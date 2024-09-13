@@ -6,15 +6,15 @@ class RakeTaskLogsRequestWithActiveRecordTest < ActionDispatch::IntegrationTest
   setup do
     RakeUi.configuration.active_storage = true
 
-    @file = Rack::Test::UploadedFile.new(Rails.root.join('fixtures/sample_log.txt'), 'text/plain')
-    @rake_task_log = ::RakeTaskLog.create!(
+    file = Rack::Test::UploadedFile.new(Rails.root.join('fixtures/sample_log.txt'), 'text/plain')
+    ::RakeTaskLog.create!(
       status: 1,
       name: 'Test Rake Task',
       args: 'arg1,arg2',
       environment: 'test',
       rake_command: 'rake test',
       rake_definition_file: 'definition_file.rake',
-      log_file: @file,  # Attach the file
+      log_file: file,
       log_file_name: 'sample_log.txt',
       log_file_full_path: '/path/to/sample_log.txt',
       raker_id: 'rake-id'
