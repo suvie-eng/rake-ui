@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_06_183058) do
+ActiveRecord::Schema.define(version: 2024_09_06_183055) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2024_09_06_183058) do
     t.string "log_file_name"
     t.string "log_file_full_path"
     t.string "raker_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
