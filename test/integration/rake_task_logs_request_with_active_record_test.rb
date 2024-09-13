@@ -36,7 +36,7 @@ class RakeTaskLogsRequestWithActiveRecordTest < ActionDispatch::IntegrationTest
 
   test "show html responds with the content" do
     log = ::RakeTaskLog.all.first
-    get "/rake-ui/rake_task_logs/#{@rake_task_log.id}"
+    get "/rake-ui/rake_task_logs/#{log.id}"
 
     assert_equal 200, status
     assert_includes response.body, "INVOKED RAKE TASK OUTPUT BELOW"

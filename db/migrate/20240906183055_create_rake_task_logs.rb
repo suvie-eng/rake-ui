@@ -1,6 +1,6 @@
-class CreateRakeTaskLogs < ActiveRecord::Migration[6.1]
+class CreateRakeTaskLogs < ActiveRecord::Migration[5.2]
   def change
-    create_table :rake_task_logs do |t|
+    create_table :rake_task_logs, if_not_exists: true do |t|
       t.integer :status, default: 0
       t.string :name
       t.string :args
