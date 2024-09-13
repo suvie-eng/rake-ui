@@ -60,10 +60,6 @@ RakeUi.configuration do |config|
   config.active_storage = false
 end
 ```
-Run this command to generate database structure
-```rb
-bundle exec rake rake_ui:migrate
-```
 
 We recommend adding guards in your route to ensure that the proper authentication is in place to ensure that users are authenticated so that if this were ever to be rendered in production, you would be covered.  The best way for that is [router constraints](https://guides.rubyonrails.org/routing.html#specifying-constraints)
 
