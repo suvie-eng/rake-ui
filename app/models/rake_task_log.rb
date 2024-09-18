@@ -2,7 +2,8 @@ class RakeTaskLog < ApplicationRecord
   include RakeTaskLogs
 
   ATTRIBUTES_TO_SHOW = %w[id name date args environment rake_command rake_definition_file log_file_name log_file_full_path]
-  has_one_attached :log_file
+  STORAGE_SERVICE =  RakeUi.configuration.storage_service.presence || Rails.application.config.active_storage.service
+  has_one_attached :log_file, service: STORAGE_SERVICE
   enum status: { in_progress: 0, finished: 1 }
 
   def self.build_new_for_command(name:, rake_definition_file:, rake_command:, raker_id:, args: nil, environment: nil)
