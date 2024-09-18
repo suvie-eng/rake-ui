@@ -60,6 +60,11 @@ RakeUi.configuration do |config|
   config.active_storage = false
 end
 ```
+if you want to specify active storage service,
+update initializer with
+```
+storage_service = :amazon
+```
 
 We recommend adding guards in your route to ensure that the proper authentication is in place to ensure that users are authenticated so that if this were ever to be rendered in production, you would be covered.  The best way for that is [router constraints](https://guides.rubyonrails.org/routing.html#specifying-constraints)
 
