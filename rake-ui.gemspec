@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rake"
 
   spec.add_development_dependency "standardrb"
+  spec.add_dependency 'activestorage'
 end

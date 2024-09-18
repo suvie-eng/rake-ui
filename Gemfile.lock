@@ -3,6 +3,7 @@ PATH
   specs:
     rake-ui (0.1.0)
       actionpack
+      activestorage
       activesupport
       railties
       rake

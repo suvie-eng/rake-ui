@@ -82,8 +82,7 @@ module RakeUi
 
     def call(args: nil, environment: nil)
       rake_command = build_rake_command(args: args, environment: environment)
-
-      rake_task_log = RakeUi::RakeTaskLog.build_new_for_command(
+      rake_task_log = klass.build_new_for_command(
         name: name,
         args: args,
         environment: environment,
@@ -98,6 +97,7 @@ module RakeUi
         system(rake_task_log.rake_command_with_logging)
 
         system(rake_task_log.command_to_mark_log_finished)
+        rake_task_log.attach_file_with_rake_task_log if RakeUi.configuration.active_storage
       end
 
       rake_task_log
@@ -121,6 +121,10 @@ module RakeUi
       end
 
       command
+    end
+
+    def klass
+      @klass ||= RakeUi.configuration.active_storage ? ::RakeTaskLog : RakeUi::RakeTaskLog
     end
   end
 end
