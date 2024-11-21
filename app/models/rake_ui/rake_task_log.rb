@@ -2,17 +2,7 @@
 
 module RakeUi
   class RakeTaskLog < OpenStruct
-    # year-month-day-hour(24hour time)-minute-second-utc
-    ID_DATE_FORMAT = "%Y-%m-%d-%H-%M-%S%z"
-    REPOSITORY_DIR = Rails.root.join("tmp", "rake_ui")
-    FILE_DELIMITER = "____"
-    FINISHED_STRING = "+++++ COMMAND FINISHED +++++"
-    TASK_HEADER_OUTPUT_DELIMITER = "-------------------------------"
-    FILE_ITEM_SEPARATOR = ": "
-
-    def self.create_tmp_file_dir
-      FileUtils.mkdir_p(REPOSITORY_DIR.to_s)
-    end
+    include RakeTaskLogs
 
     def self.truncate
       FileUtils.rm_rf(Dir.glob(REPOSITORY_DIR.to_s + "/*"))
@@ -116,16 +106,8 @@ module RakeUi
       super || parsed_file_contents[:log_file_full_path]
     end
 
-    def rake_command_with_logging
-      "#{rake_command} 2>&1 >> #{log_file_full_path}"
-    end
-
     def file_contents
       @file_contents ||= File.read(log_file_full_path)
-    end
-
-    def command_to_mark_log_finished
-      "echo #{FINISHED_STRING} >> #{log_file_full_path}"
     end
 
     def finished?
