@@ -12,8 +12,7 @@ module RakeUi
       :log_file_full_path].freeze
 
     def index
-      @rake_task_logs = RakeUi::RakeTaskLog.all.sort_by(&:id)
-
+      @rake_task_logs = klass.all
       respond_to do |format|
         format.html
         format.json do
@@ -25,8 +24,7 @@ module RakeUi
     end
 
     def show
-      @rake_task_log = RakeUi::RakeTaskLog.find_by_id(params[:id])
-
+      @rake_task_log = klass.find_by_id(params[:id])
       @rake_task_log_content = @rake_task_log.file_contents.gsub("\n", "<br />")
       @rake_task_log_content_url = rake_task_log_path(@rake_task_log.id, format: :json)
       @is_rake_task_log_finished = @rake_task_log.finished?
@@ -55,5 +53,10 @@ module RakeUi
     def rake_task_logs_as_json(tasks = [])
       tasks.map { |task| rake_task_log_as_json(task) }
     end
+
+    def klass
+      RakeUi.configuration.active_storage ? ::RakeTaskLog : RakeUi::RakeTaskLog
+    end
+
   end
 end
